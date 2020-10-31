@@ -10,7 +10,7 @@ mongoose.connect(
     Image: "",
     link:  ""
   }
-  db.flashCards
+  db.words
   .remove({})
   .then(() => db.words.collection.insertMany(flashCardsSeed))
   .then(data => {

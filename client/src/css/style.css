@@ -1,0 +1,5 @@
+body {
+    background-image: url(/client/public/images/backgroundsky.jpg) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
