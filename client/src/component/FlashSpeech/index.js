@@ -1,8 +1,9 @@
-import React from "react";
-
+import React from 'react';
+import Speech from 'react-speech';
 
 function FlashSpeech(props) {
-    responsiveVoice.speak(prop.text);
+  console.log(props);
+  return <Speech text={props} />;
 }
 
 export default FlashSpeech;
