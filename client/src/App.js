@@ -7,6 +7,7 @@ import '../src/css/style.css';
 import Login from './pages/login';
 import Header from './components/Header';
 import Footer from './components/Footer';
+// import Navbar from "./component/navBar/Navbar"
 
 import FlashSpeech from './components/flashSpeech/index';
 import Card from '@material-ui/core/Card';
