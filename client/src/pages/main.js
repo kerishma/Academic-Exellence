@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from '../components/NavBar/index';
-import FlashSpeech from '../components/flashSpeech';
+import navBar from '../components/navBar/Navbar';
+import FlashSpeech from '../components/FlashSpeech';
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
