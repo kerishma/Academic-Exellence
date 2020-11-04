@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+import React from 'react';
+import "../FlashSpeech/cards.css"
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcard Test</title>
     <link rel="stylesheet" href="cards.css" />
-</head>
 <body>
 
     <div class="mainContainer">
@@ -22,5 +21,3 @@
         </div>
       </div>
     
-</body>
-</html>
