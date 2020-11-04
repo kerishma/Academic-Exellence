@@ -26,7 +26,7 @@ body {
     transition: all 0.8s ease;
 }
 
-.card:hover{
+.rotate{
     transform: rotateY(180deg);
 }
 
