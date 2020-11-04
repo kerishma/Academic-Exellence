@@ -5,7 +5,7 @@ function Login() {
     return (
         <div>
 
-            <img src="../assets/imgs/StacheLogoBlack.jpg" id="logo" width="35%" />
+
             <div id="loginbox" className="container">
                 <div className="row justify-content-center center">
 
@@ -23,7 +23,7 @@ function Login() {
                                 <input type="password" className="form-control" id="password-input" placeholder="" />
                             </div>
                         </form>
-                        <img id="submit" src="../assets/imgs/subutton.JPG" width="65%" />
+
 
 
                     </div>
