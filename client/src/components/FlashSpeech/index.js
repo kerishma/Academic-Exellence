@@ -6,4 +6,5 @@ function FlashSpeech(props) {
   return <Speech text={props} />;
 }
 
+
 export default FlashSpeech;
