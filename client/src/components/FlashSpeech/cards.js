@@ -9,15 +9,35 @@ import "../FlashSpeech/cards.css"
 
     <div class="mainContainer">
 
-        <div class="card">
+        <div id="card" class="card">
   
-          <div class="cardFront"><h1>Front of Card</h1><p>This side can hold the word from the array.<br><br><br>Touch (not click) card with mouse to turn card over.</p>
+          <div class="cardFront">
+            <button onclick="flip()">Flip to Back</button>
+            <h1>Front of Card</h1>
+            <p>This side can hold the word from the array.
+            </p>
             <button>All caps</button>
-            <button>Lower case</button></div>
+            <button>Lower case</button>
+          </div>
   
-          <div class="cardBack"><h1>Back of Card</h1><p>This side can hold an image and also the voice button.</p>
-          <button>Say it!</button></div>
+          <div class="cardBack">
+            <button onclick="flip()">Flip to Front</button>
+            <h1>Back of Card</h1>
+            <p>This side can hold an image and also the voice button.
+            </p>
+            <button>Say it!</button>
+          </div>
   
         </div>
-      </div>
+    </div>
     
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+function flip() {
+    $(`.card`).toggleClass(`rotate`);
+}
+</script>
+
+</html>
