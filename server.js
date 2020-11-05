@@ -4,13 +4,16 @@ const routes = require("./routes");
 const { MONGODB_URI } = require("./keys");
 require("./models/user")
 
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
+const PORT = 3000;
 const app = express();
 
+
+app.use(express.json());
 app.use(require("./routes/auth"))
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
