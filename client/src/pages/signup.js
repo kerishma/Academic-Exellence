@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/login.css";
+import "../css/signup.css";
 
-function Login() {
+function Signup() {
     return (
         <div>
 
@@ -15,11 +15,11 @@ function Login() {
 
                         <form className="login">
                             <div className="form-group">
-                                <label for="formGroupExampleInput" className="labels">User Name</label>
+                                <label for="formGroupExampleInput" className="labels">Create User Name</label>
                                 <input type="text" className="form-control" id="user-input" placeholder="" />
                             </div>
                             <div className="form-group">
-                                <label for="formGroupExampleInput2" className="labels">Password</label>
+                                <label for="formGroupExampleInput2" className="labels">Create Password</label>
                                 <input type="password" className="form-control" id="password-input" placeholder="" />
                             </div>
                         </form>
@@ -29,11 +29,11 @@ function Login() {
                     </div>
 
                 </div>
-                <p>Want to eXell? Start <a href="/signup">here!</a></p>
+                <p>Already an eXellerater? login <a href="/">here!</a></p>
 
             </div>
         </div>
     )
 }
 
-export default Login;
+export default Signup;
