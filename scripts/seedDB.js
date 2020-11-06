@@ -3,41 +3,39 @@ const mongoose = require("mongoose");
 const db = require("../models");
 const wordsAPI = require("../routes/API/words");
 
-
 mongoose.connect(
       process.env.MONGODB_URI ||
       "mongodb://localhost/words"
     );
 
-    
     console.log(wordsAPI.getwords())
   //  (res => {console.log(res)}
   //     )
       // .catch(err =>{console.log(err)})
    
   
-// mongoose.connect("mongodb://localhost/flashCards", {
-//   useNewUrlParser: true,
-//   useFindAndModify: false
-// });
- 
-const wordSeed = [
-  {
-    words: wordsAPI.getwords()
-  }];
-
-  db.word
-  .remove({})
-  .then(() => db.word.collection.insertMany(wordSeed))
-  .then(data => {
-      console.log(data.result.n + " records inserted!");
-      process.exit(0);
-  })
-  .catch(err => {
-      console.error(err);
-      process.exit(1);
-  });
-
+      
+      const wordSeed = [
+        {
+          words: wordsAPI.getwords()
+        }];
+        
+        db.word
+        .remove({})
+        .then(() => db.word.collection.insertMany(wordSeed))
+        .then(data => {
+          console.log(data.result.n + " records inserted!");
+          process.exit(0);
+        })
+        .catch(err => {
+          console.error(err);
+          process.exit(1);
+        });
+        
+        // mongoose.connect("mongodb://localhost/flashCards", {
+        //   useNewUrlParser: true,
+        //   useFindAndModify: false
+        // });
 //   // {
 //   const unirest = require("unirest");
 //   const req = unirest("GET", "https://rapidapi.p.rapidapi.com/word_of_day");
