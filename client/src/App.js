@@ -8,7 +8,8 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Navbar from "./components/navBar/Navbar"
+// import Navbar from "./components/navBar/Navbar"
+import Landing from "./pages/landing";
 
 import FlashSpeech from './components/FlashSpeech/index';
 import Card from '@material-ui/core/Card';
@@ -20,11 +21,12 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         {/* <Header /> */}
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/landing" component={Landing} />
           <Route exact path="/main" component={main} />
         </Switch>
         <Footer />
