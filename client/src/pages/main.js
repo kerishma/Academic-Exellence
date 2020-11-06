@@ -9,18 +9,19 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
+// const wordsAPI = require('../../../routes/API/words');
+// console.log(wordsAPI);
+
 function Main() {
   return (
     <Router>
-    <div>
-      <Navbar />
-    <Cards/>
-    </div>
+      <div>
+        <Navbar />
+        <Cards />
+      </div>
     </Router>
-  )
+  );
   // return FlashSpeech('testing');
 }
-
-
 
 export default Main;
