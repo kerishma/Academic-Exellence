@@ -6,14 +6,17 @@
    align-items: center;
    font-size: 1.2rem;
 }
-
-.container-fluid {
+.navbar {
     background: rgb(107, 107, 107);
-    padding-bottom: -25px;
 }
 
+/* .container-fluid {
+    background: rgb(107, 107, 107);
+    padding-bottom: -25px;
+} */
+
 .navbar-logo {
-    color: orangered;
+    color: #ffc728;
     justify-self: start;
     margin-left: 20px;
     cursor: pointer;
@@ -38,13 +41,13 @@
 }
 
 .nav-links {
-    color: wheat;
+    color: #ffc728;
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
 
 .nav-links:hover {
-    background-color: violet;
+    background-color: rgb(228, 86, 34);
     border-radius: 4px;
     transition: all 0.2s ease-out;
 }
