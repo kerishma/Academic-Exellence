@@ -1,0 +1,6 @@
+footer {
+    position: fixed;
+    /* justify-content: center; */
+    left: 50%;
+    bottom:0;
+}

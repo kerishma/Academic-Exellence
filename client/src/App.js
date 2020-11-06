@@ -10,6 +10,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 // import Navbar from "./components/navBar/Navbar"
 import Landing from "./pages/landing";
+import Coloring from "./pages/coloring";
+import Drawing from "./pages/drawing";
 
 import FlashSpeech from './components/FlashSpeech/index';
 import Card from '@material-ui/core/Card';
@@ -28,6 +30,8 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/main" component={main} />
+          <Route exact path="/coloring" component={Coloring} />
+          <Route exact path="/drawing" component={Drawing} />
         </Switch>
         <Footer />
       </div>
