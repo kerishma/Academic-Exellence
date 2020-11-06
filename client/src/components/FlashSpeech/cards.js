@@ -13,12 +13,15 @@ const options = {
   },
 };
 
+let count = 0;
 export default class Cards extends Component {
   constructor(props) {
     super(props);
     this.state = {
       words: [],
+      currentWord: '',
     };
+    this.renderNextCard = this.renderNextCard.bind(this);
   }
 
   getWordsAPI = () => {
@@ -28,6 +31,7 @@ export default class Cards extends Component {
       .then((response) => {
         this.setState({
           words: response.data.typeOf,
+          currentWord: response.data.typeOf[0],
         });
         console.log(response.data);
       })
@@ -40,23 +44,40 @@ export default class Cards extends Component {
     this.getWordsAPI();
   }
 
-  renderCards = () => {
-    let allWords = this.state.words;
+  renderNextCard = () => {
+    console.log(count);
+    if (count === this.state.words.length - 1) {
+      count = 0;
+    } else {
+      count++;
+    }
 
-    let cardWordEntries = [];
+    if (this.state.currentWord === null) {
+      count++;
+    }
 
-    for (let i = 0; i < allWords.length; i++) {
-      cardWordEntries.push(
+    this.setState({
+      currentWord: this.state.words[count],
+    });
+
+    return this.state.currentWord;
+  };
+
+  render() {
+    return (
+      <div className="mainContainer">
         <div id="card" className="card">
           <div className="cardFront">
             {/* <button onclick="flip()" id="flipback">Flip to Back</button> */}
-            <h1>{allWords[i]}</h1>
-            <p>This side can hold the word from the array.</p>
+            <h1>{this.state.currentWord}</h1>
+            {/* <p>This side can hold the word from the array.</p> */}
             <center>
-              <Speech text={allWords[i]} />
+              <Speech text={this.state.currentWord} />
             </center>
             <center>
-              <button id="nextWord">Next Word</button>
+              <button id="nextWord" onClick={this.renderNextCard}>
+                Next Word
+              </button>
             </center>
           </div>
 
@@ -67,13 +88,8 @@ export default class Cards extends Component {
             <button>Say it!</button>
           </div> */}
         </div>
-      );
-    }
-    return cardWordEntries;
-  };
-
-  render() {
-    return <div className="mainContainer">{this.renderCards()}</div>;
+      </div>
+    );
   }
 
   /*{/* <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
