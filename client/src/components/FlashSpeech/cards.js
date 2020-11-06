@@ -51,7 +51,7 @@ export default class Cards extends Component {
           <div className="cardFront">
             {/* <button onclick="flip()" id="flipback">Flip to Back</button> */}
             <h1>{allWords[i]}</h1>
-            <p>This side can hold the word from the array.</p>
+            {/* <p>This side can hold the word from the array.</p> */}
             <center>
               <Speech text={allWords[i]} />
             </center>
