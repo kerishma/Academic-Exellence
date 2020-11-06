@@ -1,43 +1,69 @@
+const { response } = require("express");
 const mongoose = require("mongoose");
 const db = require("../models");
+const wordsAPI = require("../routes/API/words");
 
 
 mongoose.connect(
       process.env.MONGODB_URI ||
       "mongodb://localhost/words"
     );
+
+    
+    console.log(wordsAPI.getwords())
+  //  (res => {console.log(res)}
+  //     )
+      // .catch(err =>{console.log(err)})
+   
+  
 // mongoose.connect("mongodb://localhost/flashCards", {
 //   useNewUrlParser: true,
 //   useFindAndModify: false
 // });
  
 const wordSeed = [
-  // {
-  const unirest = require("unirest");
-  const req = unirest("GET", "https://rapidapi.p.rapidapi.com/word_of_day");
+  {
+    words: wordsAPI.getwords()
+  }];
 
-  req.headers({
-	"x-rapidapi-key": "0fc2d0a77cmshbe792af71542bf5p134800jsn3fa7dd925eba",
-	"x-rapidapi-host": "englishapi.p.rapidapi.com",
-	"useQueryString": true
-  }),
-
-  var unirest = require("unirest");
-
-  var req = unirest("GET", "https://rapidapi.p.rapidapi.com/words/hatchback/typeOf");
-
-  req.headers({
-	"x-rapidapi-key": "0fc2d0a77cmshbe792af71542bf5p134800jsn3fa7dd925eba",
-	"x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-	"useQueryString": true
+  db.word
+  .remove({})
+  .then(() => db.word.collection.insertMany(wordSeed))
+  .then(data => {
+      console.log(data.result.n + " records inserted!");
+      process.exit(0);
+  })
+  .catch(err => {
+      console.error(err);
+      process.exit(1);
   });
 
+//   // {
+//   const unirest = require("unirest");
+//   const req = unirest("GET", "https://rapidapi.p.rapidapi.com/word_of_day");
 
-req.end(function (res) {
-	if (res.error) throw new Error(res.error);
+//   req.headers({
+// 	"x-rapidapi-key": "0fc2d0a77cmshbe792af71542bf5p134800jsn3fa7dd925eba",
+// 	"x-rapidapi-host": "englishapi.p.rapidapi.com",
+// 	"useQueryString": true
+//   }),
 
-	console.log(res.body);
-});
+  // var unirest = require("unirest");
+
+  // var req = unirest("GET", "https://rapidapi.p.rapidapi.com/words/hatchback/typeOf");
+
+  // req.headers({
+	// "x-rapidapi-key": "0fc2d0a77cmshbe792af71542bf5p134800jsn3fa7dd925eba",
+	// "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
+	// "useQueryString": true
+  // });
+
+
+// req.end(function (res) {
+// 	if (res.error) throw new Error(res.error);
+
+// 	console.log(res.body);
+// });
 
 
 
@@ -60,17 +86,17 @@ req.end(function (res) {
   //   Image: "https://static.scientificamerican.com/sciam/cache/file/92E141F8-36E4-4331-BB2EE42AC8674DD3_source.jpg"
   // },
 
-  db.word
-  .remove({})
-  .then(() => db.word.collection.insertMany(wordSeed))
-  .then(data => {
-      console.log(data.result.n + " records inserted!");
-      process.exit(0);
-  })
-  .catch(err => {
-      console.error(err);
-      process.exit(1);
-  });
+  // db.word
+  // .remove({})
+  // .then(() => db.word.collection.insertMany(wordSeed))
+  // .then(data => {
+  //     console.log(data.result.n + " records inserted!");
+  //     process.exit(0);
+  // })
+  // .catch(err => {
+  //     console.error(err);
+  //     process.exit(1);
+  // });
 
 
 //   {
