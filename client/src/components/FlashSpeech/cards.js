@@ -56,7 +56,8 @@ export default class Cards extends Component {
               <Speech text={allWords[i]} />
             </center>
             <center>
-              <button id="nextWord">Next Word</button>
+            <button id="nextWord" onClick={()=>{if(i < allWords.length-1){ i = i+1; 
+              console.log("nextWord: ", allWords[i], " - index:",i)}}}>Next Word</button>
             </center>
           </div>
 

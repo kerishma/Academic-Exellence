@@ -20,12 +20,8 @@ class Footer extends Component {
       <footer>
         <div className="row">
           <div className="twelve columns">
-            <ul>
-              <li>with love</li>
-            </ul>
-
             <ul className="copyright">
-              <li>&copy; exelleraters </li>
+              &copy; eXelleraters
 
             </ul>
           </div>
