@@ -5,6 +5,7 @@ body {
 /*Holds everything*/
 .mainContainer{
     position: absolute;
+    justify-content: center;
     width: 250px;
     height: 320px;
     background: none;
@@ -13,6 +14,12 @@ body {
     transform: translate(-50%, -50%);
   
 }
+
+
+.rs-play {
+    width: 25%;
+}
+
 
 /*Holds front and back faces of card*/
 .card {
@@ -34,8 +41,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 200%;
+    height: 150%;
     border-radius: 10px;
     backface-visibility: hidden;
     overflow: hidden;
@@ -72,4 +79,9 @@ body {
     font-weight: normal;
     font-size: 12px;
     text-align: center;
+}
+
+#nextWord {
+    position: relative;
+    top: 35px;
 }
