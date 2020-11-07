@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from '../components/navBar/Navbar';
+// import Navbar from '../components/navBar/Navbar';
 // import FlashSpeech from '../components/FlashSpeech';
 import Cards from '../components/FlashSpeech/cards';
 
@@ -16,7 +16,7 @@ function Main() {
   return (
     <Router>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Cards />
       </div>
     </Router>
