@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from '../components/navBar/Navbar';
+// import Navbar from '../components/navBar/Navbar';
 // import FlashSpeech from '../components/FlashSpeech';
 import DrawingCanvas from "../components/Drawing/";
 
@@ -14,7 +14,7 @@ function Drawing() {
   return (
     <Router>
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <DrawingCanvas />
     </div>
     </Router>

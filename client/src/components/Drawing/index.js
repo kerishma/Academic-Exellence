@@ -70,9 +70,12 @@ function addClick(x, y) {
   setClickY([...clickY,y]);
   // setDrag([...drag,dragging]);
 }
-// function clearCanvas () {
-//    canvas.clearRect(0, 0, 490, 220);
-// }
+function clearCanvas () {
+  const canvas = context.current.getContext("2d")
+   canvas.clearRect(0, 0, 600, 400);
+   setClickX([]);
+   setClickY([]);
+}
 
 function redraw() {
   const canvas = context.current.getContext("2d")
@@ -105,10 +108,10 @@ function redraw() {
   return (
     <div className="mainContainer">
       <div id="drawingCanvas" className="drawingCanvas">
-        <canvas id="canvasInAPerfectWorld" style = {{backgroundColor: "#fff"}} width="490" height="220" 
+        <canvas id="canvasInAPerfectWorld" width="600" height="400" 
         ref = {context} onMouseDown = {mousedown} onMouseMove = {mousemove} 
         onMouseUp = {mouseup} onMouseLeave = {mouseleave}></canvas>
-        <div id="canvasDiv"></div>
+        <button id="clearbtn" onClick={clearCanvas}>Clear</button>
       </div>
     </div>
   );

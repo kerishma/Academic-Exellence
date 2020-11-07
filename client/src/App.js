@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useLocation} from 'react-router-dom';
 import main from './pages/main';
 import '../src/css/style.css';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Header from './components/Header';
 import Footer from './components/Footer';
-// import Navbar from "./components/navBar/Navbar"
+import Navbar from "./components/navBar/Navbar"
 import Landing from "./pages/landing";
 import Coloring from "./pages/coloring";
 import Drawing from "./pages/drawing";
@@ -20,10 +20,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 function App() {
+  const location = useLocation();
   return (
-    <Router>
+    // <Router>
       <div>
-        {/* <Navbar /> */}
+        {location.pathname !=="/signup" && location.pathname !=="/" && <Navbar />}
         {/* <Header /> */}
         <Switch>
           <Route exact path="/" component={Login} />
@@ -35,7 +36,7 @@ function App() {
         </Switch>
         <Footer />
       </div>
-    </Router>
+    // </Router>
   );
 }
 

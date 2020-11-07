@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from '../components/navBar/Navbar';
+// import Navbar from '../components/navBar/Navbar';
 
 
 import Card from '@material-ui/core/Card';
@@ -12,7 +12,7 @@ function Coloring() {
   return (
     <Router>
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
     </div>
     </Router>
   )
