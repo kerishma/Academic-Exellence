@@ -1,85 +1,117 @@
-import React, { Component } from 'react';
-import "../Drawing/drawing.css";
+import React, { useState, useRef, useEffect } from 'react';
+import '../Drawing/drawing.css';
+
 import Typography from '@material-ui/core/Typography';
+// import e from 'express';
+// import $ from 'jquery';
 
-context = document.getElementById('canvasInAPerfectWorld').getContext("2d");
+function DrawingCanvas(props) {
+// let context.current = document.getElementById('canvasInAPerfectWorld').getcontext.current('2d');
+const context= useRef(null);
+const [paint, setPaint] = useState();
+// const [drag, setDrag] = useState([]);
+const [clickX, setClickX] = useState([]);
+const [clickY, setClickY] = useState([]);
+// const canvasDiv = document.getElementById('canvasDiv');
+// let canvas = document.createElement('canvas');
+// canvas.setAttribute('width', 100);
+// canvas.setAttribute('height', 100);
+// canvas.setAttribute('id', 'canvas');
+// canvasDiv.appendChild(canvas);
+// let G_vmlCanvasManager;
+// if (typeof G_vmlCanvasManager != 'undefined') {
+//   canvas = G_vmlCanvasManager.initElement(canvas);
+// }
+// context.current = canvas.getcontext.current('2d');
+const mouseCurrent = (e) => {
+const { top, left } = context.current.getBoundingClientRect();
+const percentDiff = context.current.width / e.target.clientWidth;
+const adjustedX = (e.clientX - left) * percentDiff;
+const adjustedY = (e.clientY - top) * percentDiff;
+return [
+  adjustedX, adjustedY
+]
+};
+const mousedown = (e) => {
+  // var mouseX = e.pageX - e.target.offsetLeft;
+  // var mouseY = e.pageY - e.target.offsetTop;
 
-const canvasDiv = document.getElementById('canvasDiv');
-canvas = document.createElement('canvas');
-canvas.setAttribute('width', canvasWidth);
-canvas.setAttribute('height', canvasHeight);
-canvas.setAttribute('id', 'canvas');
-canvasDiv.appendChild(canvas);
-if(typeof G_vmlCanvasManager != 'undefined') {
-	canvas = G_vmlCanvasManager.initElement(canvas);
-}
-context = canvas.getContext("2d");
+  setPaint(true);
+  const [x,y] = mouseCurrent(e)
+  addClick(x, y);
+  redraw();
+};
 
-$('#canvas').mousedown(function(e){
-    var mouseX = e.pageX - this.offsetLeft;
-    var mouseY = e.pageY - this.offsetTop;
-          
-    paint = true;
-    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+const mousemove = (e) => {
+  e.persist()
+  if (paint) {
+    console.log (e)
+    const [x,y] = mouseCurrent(e)
+    addClick(x, y);
     redraw();
-  });
+  }
+};
 
-  $('#canvas').mousemove(function(e){
-    if(paint){
-      addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-      redraw();
-    }
-  });
+const mouseup = (e) => {
+  setPaint (false);
+};
 
-  $('#canvas').mouseup(function(e){
-    paint = false;
-  });
+const mouseleave = (e) => {
+  setPaint (false);
+};
 
-  $('#canvas').mouseleave(function(e){
-    paint = false;
-  });
+// var clickX = new Array();
+// var clickY = new Array();
+// var clickDrag = new Array();
+// var paint;
 
-  var clickX = new Array();
-  var clickY = new Array();
-  var clickDrag = new Array();
-  var paint;
+function addClick(x, y) {
+  setClickX([...clickX,x]);
+  setClickY([...clickY,y]);
+  // setDrag([...drag,dragging]);
+}
+// function clearCanvas () {
+//    canvas.clearRect(0, 0, 490, 220);
+// }
+
+function redraw() {
+  const canvas = context.current.getContext("2d")
   
-  function addClick(x, y, dragging)
-  {
-    clickX.push(x);
-    clickY.push(y);
-    clickDrag.push(dragging);
-  }
+  // canvas.clearRect(0, 0, 490, 220);
 
-  function redraw(){
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-    
-    context.strokeStyle = "#df4b26";
-    context.lineJoin = "round";
-    context.lineWidth = 5;
-              
-    for(var i=0; i < clickX.length; i++) {		
-      context.beginPath();
-      if(clickDrag[i] && i){
-        context.moveTo(clickX[i-1], clickY[i-1]);
-       }else{
-         context.moveTo(clickX[i]-1, clickY[i]);
-       }
-       context.lineTo(clickX[i], clickY[i]);
-       context.closePath();
-       context.stroke();
+  canvas.strokeStyle = '#000';
+  canvas.lineJoin = 'round';
+  canvas.lineWidth = 5;
+
+  // for (var i = 0; i < clickX.length; i++) {
+    canvas.beginPath();
+    if (clickX.length > 1) {
+      canvas.moveTo(clickX[clickX.length - 2], clickY[clickY.length - 2]);
+    } else {
+      canvas.moveTo(clickX[clickX.length] - 1, clickY[clickY.length]);
     }
+    canvas.lineTo(clickX[clickX.length - 1], clickY[clickY.length - 1]);
+    canvas.closePath();
+    canvas.stroke();
   }
+// }
 
-  renderCanvas = () => {
-    return (
-        <div className="mainContainer">
-            <div id="drawingCanvas" className="drawingCanvas">
-            <canvas id="canvasInAPerfectWorld" width="490" height="220"></canvas>
-            <div id="canvasDiv"></div>
+// useEffect(() => {
+//   if (paint) { 
+//   redraw()
+// }
+// }, [clickX,clickY, paint])
 
-            </div>
-        </div>
-    )
+  return (
+    <div className="mainContainer">
+      <div id="drawingCanvas" className="drawingCanvas">
+        <canvas id="canvasInAPerfectWorld" style = {{backgroundColor: "#fff"}} width="490" height="220" 
+        ref = {context} onMouseDown = {mousedown} onMouseMove = {mousemove} 
+        onMouseUp = {mouseup} onMouseLeave = {mouseleave}></canvas>
+        <div id="canvasDiv"></div>
+      </div>
+    </div>
+  );
 }
 
+export default DrawingCanvas;
