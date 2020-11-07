@@ -13,6 +13,7 @@ const options = {
   },
 };
 
+
 let count = 0;
 export default class Cards extends Component {
   constructor(props) {
