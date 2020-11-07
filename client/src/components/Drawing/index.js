@@ -1,61 +1,117 @@
-import React, { Component } from 'react';
-import "../Drawing/drawing.css";
-// import Typography from '@material-ui/core/Typography';
+import React, { useState, useRef, useEffect } from 'react';
+import '../Drawing/drawing.css';
 
-const clearButton = document.querySelector('.clear');
-const stroke_weight = document.querySelector('.stroke-weight');
-const color_picker = document.querySelector('.color-picker');
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
-let isDrawing = false;
-canvas.addEventListener('mousedown', start);
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', stop);
-clearButton.addEventListener('click', clearCanvas);
-function start (e) {
-  isDrawing = true;
-  draw(e);
-}
-function draw ({clientX: x, clientY: y}) {
-  if (!isDrawing) return;
-  ctx.lineWidth = stroke_weight.value;
-  ctx.lineCap = "round";
-  ctx.strokeStyle = color_picker.value;
-  ctx.lineTo(x, y);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-}
-function stop () {
-  isDrawing = false;
-  ctx.beginPath();
-}
-function clearCanvas () {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
-window.addEventListener('resize', resizeCanvas);
-function resizeCanvas () {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
+import Typography from '@material-ui/core/Typography';
+// import e from 'express';
+// import $ from 'jquery';
 
-function DrawingCanvas() {
-    return (
-        <div><canvas></canvas>
-        <main>
-          <section class="colors">
-            <input type="text" class="color-picker" value="#171717" />
-          </section>
-          <section class="thickness">
-            <input type="number" class="stroke-weight" value="3" />
-          </section>
-          <button class="clear">X</button>
-        </main>
-        </div>
-    )
+function DrawingCanvas(props) {
+// let context.current = document.getElementById('canvasInAPerfectWorld').getcontext.current('2d');
+const context= useRef(null);
+const [paint, setPaint] = useState();
+// const [drag, setDrag] = useState([]);
+const [clickX, setClickX] = useState([]);
+const [clickY, setClickY] = useState([]);
+// const canvasDiv = document.getElementById('canvasDiv');
+// let canvas = document.createElement('canvas');
+// canvas.setAttribute('width', 100);
+// canvas.setAttribute('height', 100);
+// canvas.setAttribute('id', 'canvas');
+// canvasDiv.appendChild(canvas);
+// let G_vmlCanvasManager;
+// if (typeof G_vmlCanvasManager != 'undefined') {
+//   canvas = G_vmlCanvasManager.initElement(canvas);
+// }
+// context.current = canvas.getcontext.current('2d');
+const mouseCurrent = (e) => {
+const { top, left } = context.current.getBoundingClientRect();
+const percentDiff = context.current.width / e.target.clientWidth;
+const adjustedX = (e.clientX - left) * percentDiff;
+const adjustedY = (e.clientY - top) * percentDiff;
+return [
+  adjustedX, adjustedY
+]
+};
+const mousedown = (e) => {
+  // var mouseX = e.pageX - e.target.offsetLeft;
+  // var mouseY = e.pageY - e.target.offsetTop;
+
+  setPaint(true);
+  const [x,y] = mouseCurrent(e)
+  addClick(x, y);
+  redraw();
+};
+
+const mousemove = (e) => {
+  e.persist()
+  if (paint) {
+    console.log (e)
+    const [x,y] = mouseCurrent(e)
+    addClick(x, y);
+    redraw();
+  }
+};
+
+const mouseup = (e) => {
+  setPaint (false);
+};
+
+const mouseleave = (e) => {
+  setPaint (false);
+};
+
+// var clickX = new Array();
+// var clickY = new Array();
+// var clickDrag = new Array();
+// var paint;
+
+function addClick(x, y) {
+  setClickX([...clickX,x]);
+  setClickY([...clickY,y]);
+  // setDrag([...drag,dragging]);
 }
+// function clearCanvas () {
+//    canvas.clearRect(0, 0, 490, 220);
+// }
 
+function redraw() {
+  const canvas = context.current.getContext("2d")
+  
+  // canvas.clearRect(0, 0, 490, 220);
 
+  canvas.strokeStyle = '#000';
+  canvas.lineJoin = 'round';
+  canvas.lineWidth = 5;
+
+  // for (var i = 0; i < clickX.length; i++) {
+    canvas.beginPath();
+    if (clickX.length > 1) {
+      canvas.moveTo(clickX[clickX.length - 2], clickY[clickY.length - 2]);
+    } else {
+      canvas.moveTo(clickX[clickX.length] - 1, clickY[clickY.length]);
+    }
+    canvas.lineTo(clickX[clickX.length - 1], clickY[clickY.length - 1]);
+    canvas.closePath();
+    canvas.stroke();
+  }
+// }
+
+// useEffect(() => {
+//   if (paint) { 
+//   redraw()
+// }
+// }, [clickX,clickY, paint])
+
+  return (
+    <div className="mainContainer">
+      <div id="drawingCanvas" className="drawingCanvas">
+        <canvas id="canvasInAPerfectWorld" style = {{backgroundColor: "#fff"}} width="490" height="220" 
+        ref = {context} onMouseDown = {mousedown} onMouseMove = {mousemove} 
+        onMouseUp = {mouseup} onMouseLeave = {mouseleave}></canvas>
+        <div id="canvasDiv"></div>
+      </div>
+    </div>
+  );
+}
 
 export default DrawingCanvas;
