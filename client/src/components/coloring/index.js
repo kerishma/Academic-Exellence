@@ -3,13 +3,13 @@ import '../coloring/coloring.css';
 
 
 var memory_array = ['dog', 'dog', 'hand', 'hand', 'old ', 'old', 'eat', 'eat', 
-    'one', 'one', 'red', 'red', 'books', 'books', 'sky', 'sky' 'apple', 'apple',
+    'one', 'one', 'red', 'red', 'books', 'books', 'sky', 'sky', 'apple', 'apple',
      'door', 'door', 'cat', 'cat', 'foot', 'foot', 'new', 'new', 'sleep', 'sleep', 
-     'two', 'two', 'orange', 'orange', 'toys', 'toys' 'trees', 'trees', 'banana', 
+     'two', 'two', 'orange', 'orange', 'toys', 'toys', 'trees', 'trees', 'banana', 
      'banana', 'wall', 'wall','bird', 'bird', 'face', 'face', 'happy', 'happy',
      'sit', 'sit', 'three', 'three', 'yellow', 'yellow', 'bed', 'bed', 'roads', 
      'roads', 'grape', 'grape', 'floor', 'floor',
-    'fox', 'fox',
+    'fox', 'fox'];
 var memory_values = [];
 var memory_tile_ids = [];
 var tiles_flipped = 0;
@@ -72,5 +72,6 @@ function memoryFlipTile(tile,val){
 }
 
 <div id="memory_board"></div>
-<script>newBoard();</script>
+{/* <script>newBoard();</script> */}
+
 
