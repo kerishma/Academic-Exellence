@@ -1,20 +1,21 @@
 import React from 'react';
-import '../coloring/coloring.css';
+import './memory.css';
 
+function MemoryCards(props) {
 
-var memory_array = ['dog', 'dog', 'hand', 'hand', 'old ', 'old', 'eat', 'eat', 
+const memory_array = ['dog', 'dog', 'hand', 'hand', 'old ', 'old', 'eat', 'eat', 
     'one', 'one', 'red', 'red', 'books', 'books', 'sky', 'sky', 'apple', 'apple',
      'door', 'door', 'cat', 'cat', 'foot', 'foot', 'new', 'new', 'sleep', 'sleep', 
      'two', 'two', 'orange', 'orange', 'toys', 'toys', 'trees', 'trees', 'banana', 
      'banana', 'wall', 'wall','bird', 'bird', 'face', 'face', 'happy', 'happy',
      'sit', 'sit', 'three', 'three', 'yellow', 'yellow', 'bed', 'bed', 'roads', 
      'roads', 'grape', 'grape', 'floor', 'floor',
-    'fox', 'fox'];
-var memory_values = [];
-var memory_tile_ids = [];
-var tiles_flipped = 0;
+    'fox', 'fox',];
+const memory_values = [];
+const memory_tile_ids = [];
+const tiles_flipped = 0;
 Array.prototype.memory_tile_shuffle = function(){
-    var i = this.length, j, temp;
+    let i = this.length, j, temp;
     while(--i > 0){
         j = Math.floor(Math.random() * (i+1));
         temp = this[j];
@@ -24,9 +25,9 @@ Array.prototype.memory_tile_shuffle = function(){
 }
 function newBoard(){
 	tiles_flipped = 0;
-	var output = '';
+	const output = '';
     memory_array.memory_tile_shuffle();
-	for(var i = 0; i < memory_array.length; i++){
+	for(const i = 0; i < memory_array.length; i++){
 		output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_array[i]+'\')"></div>';
 	}
 	document.getElementById('memory_board').innerHTML = output;
@@ -57,9 +58,9 @@ function memoryFlipTile(tile,val){
 				    // Flip the 2 tiles back over
 				    var tile_1 = document.getElementById(memory_tile_ids[0]);
 				    var tile_2 = document.getElementById(memory_tile_ids[1]);
-				    tile_1.style.background = 'url(tile_bg.jpg) no-repeat';
+				    tile_1.style.background = 'url(https://static.vecteezy.com/system/resources/thumbnails/000/553/435/small/apple_006.jpg) no-repeat';
             	    tile_1.innerHTML = "";
-				    tile_2.style.background = 'url(tile_bg.jpg) no-repeat';
+				    tile_2.style.background = 'url(https://static.vecteezy.com/system/resources/thumbnails/000/553/435/small/apple_006.jpg) no-repeat';
             	    tile_2.innerHTML = "";
 				    // Clear both arrays
 				    memory_values = [];
@@ -70,8 +71,16 @@ function memoryFlipTile(tile,val){
 		}
 	}
 }
+return (
+    <div className="mainContainer">
+     <div id="memory_board">
 
-<div id="memory_board"></div>
+
+	 </div>  
+	</div>  
+  );
+}
+
 {/* <script>newBoard();</script> */}
 
-
+export default MemoryCards;

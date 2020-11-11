@@ -7,12 +7,13 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import MemoryCards from '../components/Memory';
 
-function Coloring() {
+function Memory() {
   return (
     <Router>
     <div>
-      {/* <Navbar /> */}
+      <MemoryCards />
     </div>
     </Router>
   )
@@ -20,4 +21,4 @@ function Coloring() {
 
 
 
-export default Coloring;
+export default Memory;
