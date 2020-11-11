@@ -11,9 +11,9 @@ import Typography from '@material-ui/core/Typography';
 function Landing() {
   return (
     <Router>
-    <div>
-      {/* <Navbar /> */}
-    </div>
+      <div>
+        {/* <Navbar /> */}
+      </div>
     </Router>
   )
 }
