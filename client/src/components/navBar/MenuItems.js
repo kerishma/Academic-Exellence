@@ -3,24 +3,30 @@
 export const MenuItems = [
     {
         title: "Home",
+        url: "/landing",
+        cName: "nav-links"
+    },
+    {
+        title: "Flash Cards",
         url: "/main",
         cName: "nav-links"
     },
     {
-        title: "Services",
-        url: "#",
+        title: "Coloring Game",
+        url: "/coloring",
         cName: "nav-links"
-    },{
-        title: "Products",
-        url: "#",
+    },
+    {
+        title: "Drawing Game",
+        url: "/drawing",
         cName: "nav-links"
-    },{
-        title: "Contact Us",
-        url: "#",
+    },
+    {
+        title: "Logout",
+        url: "/",
         cName: "nav-links"
-    },{
-        title: "Sign Up",
-        url: "#",
-        cName: "nav-links-mobile"
+
     }
+
+
 ]

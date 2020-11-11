@@ -5,6 +5,7 @@ body {
 /*Holds everything*/
 .mainContainer{
     position: absolute;
+    justify-content: center;
     width: 250px;
     height: 320px;
     background: none;
@@ -13,6 +14,12 @@ body {
     transform: translate(-50%, -50%);
   
 }
+
+
+.rs-play {
+    width: 25%;
+}
+
 
 /*Holds front and back faces of card*/
 .card {
@@ -31,16 +38,23 @@ body {
 }
 
 .cardFront {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: absolute; 
+    justify-content: center;
+    align-items: center;
+    /* top: 0;
+    left: 0; */
+    width: 120%;
+    height: 150%;
     border-radius: 10px;
     backface-visibility: hidden;
     overflow: hidden;
     background: #ffc728;
     color: #000;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.cardFront:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .cardBack {
@@ -64,6 +78,11 @@ body {
     font-weight: bold;
     font-size: 24px;
     text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.nextWord h1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .cardFront p, .cardBack p{
@@ -72,4 +91,17 @@ body {
     font-weight: normal;
     font-size: 12px;
     text-align: center;
+}
+
+#nextWord {
+    font-family:'Roboto Slab', serif;
+    position: relative;
+    top: 150px;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+#nextWord:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }

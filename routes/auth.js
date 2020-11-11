@@ -1,13 +1,15 @@
 const express = require("express");
+const path = require("path");
 const router = express.Router();
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("../keys");
+const requireLogin = require("../middleware/requireLogin");
 
-router.get("/", (req, res) => {
-    res.send("hello")
-}
-);
+
+
 
 router.post("/signup", (req, res) => {
     const { email, password } = req.body;
@@ -40,10 +42,15 @@ router.post("/signup", (req, res) => {
 
 })
 
-router.post("/login", (req, res) => {
+router.get("/protected", requireLogin, (req, res) => {
+
+    res.send("you got into protected")
+})
+
+router.post("/", (req, res) => {
     const { email, password } = req.body
     if (!email || !password) {
-        res.status(422).json({ error: "please fill in both required fields" })
+        return res.status(422).json({ error: "please fill in both required fields" })
     }
     User.findOne({ email: email })
         .then(savedUser => {
@@ -53,7 +60,10 @@ router.post("/login", (req, res) => {
             bcrypt.compare(password, savedUser.password)
                 .then(doMatch => {
                     if (doMatch) {
-                        res.json({ message: "successfully signed in" })
+                        // res.json({ message: "successfully logged in" })
+                        const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET)
+                        const { _id, email } = savedUser
+                        res.json({ token, user: { _id, email } })
                     }
                     else {
                         return res.status(422).json({ error: "Invalid Email or Password" })
