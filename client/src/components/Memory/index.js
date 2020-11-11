@@ -1,7 +1,7 @@
 import React from 'react';
 import './memory.css';
 
-function MemoryCards(props) {
+function MemoryCards() {
 
 const memory_array = ['dog', 'dog', 'hand', 'hand', 'old ', 'old', 'eat', 'eat', 
     'one', 'one', 'red', 'red', 'books', 'books', 'sky', 'sky', 'apple', 'apple',
@@ -9,7 +9,8 @@ const memory_array = ['dog', 'dog', 'hand', 'hand', 'old ', 'old', 'eat', 'eat',
      'two', 'two', 'orange', 'orange', 'toys', 'toys', 'trees', 'trees', 'banana', 
      'banana', 'wall', 'wall','bird', 'bird', 'face', 'face', 'happy', 'happy',
      'sit', 'sit', 'three', 'three', 'yellow', 'yellow', 'bed', 'bed', 'roads', 
-     'roads', 'grape', 'grape', 'floor', 'floor','fox', 'fox',];
+     'roads', 'grape', 'grape', 'floor', 'floor',
+    'fox', 'fox',];
 let memory_values = [];
 let memory_tile_ids = [];
 let tiles_flipped = 0;
@@ -77,6 +78,7 @@ return (
 
 
 	 </div>  
+	 <button id="newbtn" onClick={newBoard}>New</button>
 	</div>  
   );
 }
