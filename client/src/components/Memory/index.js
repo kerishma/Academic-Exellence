@@ -1,7 +1,7 @@
 import React from 'react';
 import './memory.css';
 
-function MemoryCards(props) {
+function MemoryCards() {
 
 const memory_array = ['dog', 'dog', 'hand', 'hand', 'old ', 'old', 'eat', 'eat', 
     'one', 'one', 'red', 'red', 'books', 'books', 'sky', 'sky', 'apple', 'apple',
@@ -11,9 +11,11 @@ const memory_array = ['dog', 'dog', 'hand', 'hand', 'old ', 'old', 'eat', 'eat',
      'sit', 'sit', 'three', 'three', 'yellow', 'yellow', 'bed', 'bed', 'roads', 
      'roads', 'grape', 'grape', 'floor', 'floor',
     'fox', 'fox',];
-const memory_values = [];
-const memory_tile_ids = [];
-const tiles_flipped = 0;
+let memory_values = [];
+let memory_tile_ids = [];
+let tiles_flipped = 0;
+
+
 Array.prototype.memory_tile_shuffle = function(){
     let i = this.length, j, temp;
     while(--i > 0){
@@ -25,9 +27,9 @@ Array.prototype.memory_tile_shuffle = function(){
 }
 function newBoard(){
 	tiles_flipped = 0;
-	const output = '';
+	let output = '';
     memory_array.memory_tile_shuffle();
-	for(const i = 0; i < memory_array.length; i++){
+	for(let i = 0; i < memory_array.length; i++){
 		output += '<div id="tile_'+i+'" onclick="memoryFlipTile(this,\''+memory_array[i]+'\')"></div>';
 	}
 	document.getElementById('memory_board').innerHTML = output;
@@ -77,6 +79,7 @@ return (
 
 
 	 </div>  
+	 <button id="newbtn" onClick={newBoard}>New</button>
 	</div>  
   );
 }
