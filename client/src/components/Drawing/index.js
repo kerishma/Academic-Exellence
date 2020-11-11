@@ -9,7 +9,7 @@ function DrawingCanvas(props) {
 // let context.current = document.getElementById('canvasInAPerfectWorld').getcontext.current('2d');
 const context= useRef(null);
 const [paint, setPaint] = useState();
-// const [drag, setDrag] = useState([]);
+const [clickDrag, setDrag] = useState([]);
 const [clickX, setClickX] = useState([]);
 const [clickY, setClickY] = useState([]);
 // const canvasDiv = document.getElementById('canvasDiv');
@@ -65,17 +65,19 @@ const mouseleave = (e) => {
 // var clickDrag = new Array();
 // var paint;
 
-function addClick(x, y) {
+function addClick(x, y, drag) {
   setClickX([...clickX,x]);
   setClickY([...clickY,y]);
-  // setDrag([...drag,dragging]);
+  setDrag([...clickDrag,drag]);
 }
 function clearCanvas () {
   const canvas = context.current.getContext("2d")
    canvas.clearRect(0, 0, 600, 400);
    setClickX([]);
    setClickY([]);
+   setDrag([]);
 }
+
 
 function redraw() {
   const canvas = context.current.getContext("2d")
@@ -105,6 +107,8 @@ function redraw() {
 // }
 // }, [clickX,clickY, paint])
 
+
+
   return (
     <div className="mainContainer">
       <div id="drawingCanvas" className="drawingCanvas">
@@ -112,6 +116,7 @@ function redraw() {
         ref = {context} onMouseDown = {mousedown} onMouseMove = {mousemove} 
         onMouseUp = {mouseup} onMouseLeave = {mouseleave}></canvas>
         <button id="clearbtn" onClick={clearCanvas}>Clear</button>
+        {/* <button id="orangebtn" onClick={strokeStyle("#FF7F00")}>Orange</button> */}
       </div>
     </div>
   );
