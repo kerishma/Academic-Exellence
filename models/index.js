@@ -1,3 +1,3 @@
 module.exports = {
-    words: require("./words")
+  words: require("./words")
 };

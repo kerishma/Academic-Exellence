@@ -1,7 +1,7 @@
 import React, { Component, useContext, useState } from "react";
 import { Link, useHistory } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { MenuItems } from "./MenuItems";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from "../Button";
 
 

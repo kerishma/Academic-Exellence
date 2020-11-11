@@ -2,17 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes/index");
 const path = require("path");
-const { MONGODB_URI } = require("./keys");
+// const { MONGODB_URI } = require("./keys");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/flashCards", { useNewUrlParser: true });
-mongoose.connect(MONGODB_URI,
-  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/flashCards", { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
+// mongoose.connect(process.env.MONGODB_URI,
+//   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+// );
 
 mongoose.connection.on("connected", () => {
   console.log("mongoose is connected to mongoDB")

@@ -9,13 +9,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 function Landing() {
-    return (
-
-        <div>
-            <h1>landing</h1>
-        </div>
-
-    )
+  return (
+    <Router>
+      <div>
+        {/* <Navbar /> */}
+      </div>
+    </Router>
+  )
 }
 
 

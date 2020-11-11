@@ -2,16 +2,15 @@ import React, { useContext, createContext, useReducer, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, useHistory, useLocation } from 'react-router-dom';
-import main from './pages/main';
+import Main from './pages/main';
 import '../src/css/style.css';
 import Login from './pages/login';
 import Signup from './pages/signup';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Navbar from "./components/navBar/Navbar";
-import Main from "./pages/main"
+import Navbar from "./components/navBar/Navbar"
 import Landing from "./pages/landing";
-import Coloring from "./pages/coloring";
+import Memory from "./pages/memory";
 import Drawing from "./pages/drawing";
 
 import FlashSpeech from './components/FlashSpeech/index';
@@ -46,7 +45,7 @@ const Routing = () => {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/landing" component={Landing} />
         <Route exact path="/main" component={Main} />
-        <Route exact path="/coloring" component={Coloring} />
+        <Route exact path="/memory" component={Memory} />
         <Route exact path="/drawing" component={Drawing} />
       </Switch>
       <Footer />

@@ -1,26 +1,24 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import Navbar from '../components/navBar/Navbar';
-// import FlashSpeech from '../components/FlashSpeech';
-import DrawingCanvas from "../components/Drawing/";
 
 
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import MemoryCards from '../components/Memory';
 
-function Drawing() {
+function Memory() {
   return (
     <Router>
-      <div>
-        {/* <Navbar /> */}
-        <DrawingCanvas />
-      </div>
+    <div>
+      <MemoryCards />
+    </div>
     </Router>
   )
 }
 
 
 
-export default Drawing;
+export default Memory;
