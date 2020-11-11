@@ -12,8 +12,8 @@ export const MenuItems = [
         cName: "nav-links"
     },
     {
-        title: "Coloring Game",
-        url: "/coloring",
+        title: "Memory Game",
+        url: "/memory",
         cName: "nav-links" 
     },
     {

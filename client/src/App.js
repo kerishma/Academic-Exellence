@@ -10,7 +10,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Navbar from "./components/navBar/Navbar"
 import Landing from "./pages/landing";
-import Coloring from "./pages/coloring";
+import Memory from "./pages/memory";
 import Drawing from "./pages/drawing";
 
 import FlashSpeech from './components/FlashSpeech/index';
@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/landing" component={Landing} />
           <Route exact path="/main" component={main} />
-          <Route exact path="/coloring" component={Coloring} />
+          <Route exact path="/memory" component={Memory} />
           <Route exact path="/drawing" component={Drawing} />
         </Switch>
         <Footer />
