@@ -3,6 +3,7 @@ import "../css/login.css";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
 import { UserContext } from "../App"
+// import logo from "../../public/images/logo.JPG"
 
 
 
@@ -44,7 +45,7 @@ function Login() {
                     dispatch({ type: "USER", payload: data.user })
                     // toast
                     M.toast({ html: "Successfully logged in", classes: "#43a047 green darken-1" })
-                    history.push("/main")
+                    history.push("/landing")
                 }
 
             }).catch(err => {
@@ -54,8 +55,8 @@ function Login() {
     return (
         <div>
 
-
             <div id="loginbox" className="container">
+            {/* <img src={logo} alt="Logo"></img> */}
                 <div className="row justify-content-center center">
 
                 </div>
@@ -90,7 +91,7 @@ function Login() {
                     </div>
 
                 </div>
-                <p>Want to eXell? Start<Link to="/signup">Here</Link></p>
+                <p>Want to eXell? Start <Link to="/signup">Here</Link></p>
 
             </div>
         </div>
