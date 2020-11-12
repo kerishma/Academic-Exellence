@@ -17,7 +17,7 @@ const Navbar = () => {
     return (
 
         <nav className="NavbarItems navbar navbar-expand-lg">
-            <h3 className="navbar-logo"><Link to="/landing">aCademic eXellence</Link><i className="fab">
+            <h3 className="navbar-logo">aCademic eXellence<i className="fab">
             </i></h3>
             <div className="menu-icon" onClick={() => setClick(!click)} >
                 <i className={click ? "fas fa-times" : "fas fa-bars"}></i>

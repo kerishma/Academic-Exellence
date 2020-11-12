@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../css/signup.css";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
+import logo from "../images/logo.JPG";
 
 function Signup() {
     const history = useHistory()
@@ -44,6 +45,7 @@ function Signup() {
 
 
             <div id="loginbox" className="container">
+            <img src={logo} alt="Logo" id="mainLogo"></img>
                 <div className="row justify-content-center center">
 
                 </div>
@@ -72,13 +74,13 @@ function Signup() {
                                     placeholder="Choose a good Password!" />
                             </div>
                         </form>
-                        <button onClick={() => PostData()}>Sign Up</button>
+                        <button onClick={() => PostData()} id="signBtn">Sign Up</button>
 
 
                     </div>
 
                 </div>
-                <p>Already an eXellerater? login <Link to="/">Login</Link></p>
+                <p>Already an eXellerater? login <Link to="/">Here</Link>!</p>
 
             </div>
         </div>
