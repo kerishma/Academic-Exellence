@@ -3,7 +3,7 @@ import "../css/login.css";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
 import { UserContext } from "../App"
-// import logo from "../../public/images/logo.JPG"
+import logo from "../images/logo.JPG";
 
 
 
@@ -56,7 +56,7 @@ function Login() {
         <div>
 
             <div id="loginbox" className="container">
-            {/* <img src={logo} alt="Logo"></img> */}
+            <img src={logo} alt="Logo" id="mainLogo"></img>
                 <div className="row justify-content-center center">
 
                 </div>
@@ -82,7 +82,7 @@ function Login() {
                                     id="password-input"
                                     placeholder="Enter Password" />
                             </div>
-                            <button>Login</button>
+                            <button id="loginBtn">Login</button>
 
                         </form>
 
@@ -91,7 +91,7 @@ function Login() {
                     </div>
 
                 </div>
-                <p>Want to eXell? Start <Link to="/signup">Here</Link></p>
+                <p>Want to eXell? Start <Link to="/signup">Here</Link>!</p>
 
             </div>
         </div>
