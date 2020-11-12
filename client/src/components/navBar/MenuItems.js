@@ -14,19 +14,19 @@ export const MenuItems = [
     {
         title: "Memory Game",
         url: "/memory",
-        cName: "nav-links" 
+        cName: "nav-links"
     },
     {
         title: "Drawing Game",
         url: "/drawing",
-        cName: "nav-links" 
+        cName: "nav-links"
+    },
+    {
+        title: "Logout",
+        url: "/",
+        cName: "nav-links"
+
     }
-    // },{
-    //     title: "Products",
-    //     url: "#",
-    //     cName: "nav-links"
-    // },{
-    //     title: "Contact Us",
-    //     url: "#",
-    //     cName: "nav-links"
+
+
 ]

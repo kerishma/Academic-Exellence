@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import '../FlashSpeech/cards.css';
 import Speech from 'react-speech';
+import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
 
 const axios = require('axios');
 
-const options = {
+const api = {
   method: 'GET',
-  url: 'https://rapidapi.p.rapidapi.com/words/hatchback/typeOf',
+  url: 'https://rapidapi.p.rapidapi.com/words/car/typeOf',
   headers: {
     'x-rapidapi-key': '0fc2d0a77cmshbe792af71542bf5p134800jsn3fa7dd925eba',
     'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
   },
 };
-
 
 let count = 0;
 export default class Cards extends Component {
@@ -23,12 +25,13 @@ export default class Cards extends Component {
       currentWord: '',
     };
     this.renderNextCard = this.renderNextCard.bind(this);
+    this.handleWordChange = this.handleWordChange.bind(this);
   }
 
-  getWordsAPI = () => {
-    console.log(this.state.words);
+  getWordsAPI = (api) => {
+    console.log(this.state.api);
     axios
-      .request(options)
+      .request(api)
       .then((response) => {
         this.setState({
           words: response.data.typeOf,
@@ -42,11 +45,10 @@ export default class Cards extends Component {
   };
 
   componentDidMount() {
-    this.getWordsAPI();
+    this.getWordsAPI(api);
   }
 
   renderNextCard = () => {
-    console.log(count);
     if (count === this.state.words.length - 1) {
       count = 0;
     } else {
@@ -64,9 +66,41 @@ export default class Cards extends Component {
     return this.state.currentWord;
   };
 
+  handleWordChange = (event) => {
+    this.setState({ currentWord: event.target.value });
+  };
+
+  searchForWord = () => {
+    console.log(this.state.currentWord);
+    const api = {
+      method: 'GET',
+      url: `https://rapidapi.p.rapidapi.com/words/${this.state.currentWord}/typeOf`,
+      headers: {
+        'x-rapidapi-key': '0fc2d0a77cmshbe792af71542bf5p134800jsn3fa7dd925eba',
+        'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
+      },
+    };
+
+    console.log(api);
+
+    this.getWordsAPI(api);
+  };
+
   render() {
     return (
       <div className="mainContainer">
+        <FormControl>
+          <TextField
+            id="outlined-helperText"
+            label="Search a word"
+            placeholder="Enter a word..."
+            onChange={this.handleWordChange}
+            variant="outlined"
+          />
+          <Button variant="contained" onClick={this.searchForWord}>
+            Search
+          </Button>
+        </FormControl>
         <div id="card" className="card">
           <div className="cardFront">
             {/* <button onclick="flip()" id="flipback">Flip to Back</button> */}

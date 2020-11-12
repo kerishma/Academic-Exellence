@@ -1,11 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/signup.css";
+import { Link, useHistory } from "react-router-dom";
+import M from "materialize-css";
 
 function Signup() {
+    const history = useHistory()
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const PostData = () => {
+        if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)) {
+            M.toast({ html: "please enter a valid email" })
+            return
+        }
+        fetch("/signup", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.error) {
+                    //toast
+                    M.toast({ html: data.error, classes: "#c62828 red darken-3" })
+
+                }
+                else {
+                    //toast
+                    M.toast({ html: data.message, classes: "#43a047 green darken-1" })
+
+
+                    history.push("/")
+                }
+
+            })
+    }
     return (
         <div>
 
-            <img src="../assets/imgs/StacheLogoBlack.jpg" id="logo" width="35%" />
+
             <div id="loginbox" className="container">
                 <div className="row justify-content-center center">
 
@@ -15,21 +52,33 @@ function Signup() {
 
                         <form className="login">
                             <div className="form-group">
-                                <label for="formGroupExampleInput" className="labels">Create User Name</label>
-                                <input type="text" className="form-control" id="user-input" placeholder="" />
+                                <label for="formGroupExampleInput" className="labels">Email</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    id="user-input"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Enter you Email" />
                             </div>
                             <div className="form-group">
                                 <label for="formGroupExampleInput2" className="labels">Create Password</label>
-                                <input type="password" className="form-control" id="password-input" placeholder="" />
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    id="password-input"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="Choose a good Password!" />
                             </div>
                         </form>
-                        <img id="submit" src="../assets/imgs/subutton.JPG" width="65%" />
+                        <button onClick={() => PostData()}>Sign Up</button>
 
 
                     </div>
 
                 </div>
-                <p>Already an eXellerater? login <a href="/">here!</a></p>
+                <p>Already an eXellerater? login <Link to="/">Login</Link></p>
 
             </div>
         </div>
