@@ -11,7 +11,7 @@ const api = {
   method: 'GET',
   url: 'https://rapidapi.p.rapidapi.com/words/car/typeOf',
   headers: {
-    'x-rapidapi-key': '0fc2d0a77cmshbe792af71542bf5p134800jsn3fa7dd925eba',
+    'x-rapidapi-key': process.env.API_KEY,
     'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
   },
 };

@@ -3,7 +3,7 @@ div#memory_board {
   border: black;
   width: 800px;
   height: 540px;
-  padding: 24px;
+  padding: 30px;
   border-style: solid;
   border-radius: 10px;
   margin: 0px auto;
@@ -38,3 +38,4 @@ div#memory_board > div {
   width: 100%;
   font-size: 15px;
 }
+
