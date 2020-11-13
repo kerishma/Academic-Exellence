@@ -3,7 +3,7 @@ div#memory_board {
   border: black;
   width: 800px;
   height: 540px;
-  padding: 24px;
+  padding: 31px;
   border-style: solid;
   border-radius: 10px;
   margin: 0px auto;
@@ -26,6 +26,7 @@ div#memory_board > div {
 }
 
 .mainContainer {
+  justify-content: center;
   padding-bottom: 25px;
 }
 
@@ -33,8 +34,16 @@ div#memory_board > div {
   width: 100%;
   font-size: 15px;
 }
+.backCard {
+  font-size: 17px;
+  font-weight: bolder;
+}
 
 .frontCard > h1 {
   width: 100%;
   font-size: 15px;
+}
+.frontCard {
+  font-size: 17px;
+  font-weight: bolder;
 }
