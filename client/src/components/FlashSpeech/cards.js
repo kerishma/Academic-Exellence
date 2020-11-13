@@ -4,6 +4,7 @@ import Speech from 'react-speech';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import speakBub from "../../images/speakbub.JPG"
 
 const axios = require('axios');
 
@@ -107,7 +108,7 @@ export default class Cards extends Component {
             <h1>{this.state.currentWord}</h1>
             {/* <p>This side can hold the word from the array.</p> */}
             <center>
-              <Speech text={this.state.currentWord} />
+              <Speech text={this.state.currentWord} /><img src={speakBub} id ="speakBub"></img>
             </center>
             <center>
               <button id="nextWord" onClick={this.renderNextCard}>

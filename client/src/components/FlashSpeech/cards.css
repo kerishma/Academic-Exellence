@@ -15,6 +15,9 @@ body {
   
 }
 
+#speakBub {
+    width: 35%;
+}
 
 .rs-play {
     width: 25%;
