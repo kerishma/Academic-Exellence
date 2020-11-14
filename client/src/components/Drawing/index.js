@@ -1,27 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../Drawing/drawing.css';
 import Typography from '@material-ui/core/Typography';
-// import e from 'express';
-// import $ from 'jquery';
+
 
 function DrawingCanvas(props) {
-  // let context.current = document.getElementById('canvasInAPerfectWorld').getcontext.current('2d');
   const context = useRef(null);
   const [paint, setPaint] = useState();
   const [clickDrag, setDrag] = useState([]);
   const [clickX, setClickX] = useState([]);
   const [clickY, setClickY] = useState([]);
-  // const canvasDiv = document.getElementById('canvasDiv');
-  // let canvas = document.createElement('canvas');
-  // canvas.setAttribute('width', 100);
-  // canvas.setAttribute('height', 100);
-  // canvas.setAttribute('id', 'canvas');
-  // canvasDiv.appendChild(canvas);
-  // let G_vmlCanvasManager;
-  // if (typeof G_vmlCanvasManager != 'undefined') {
-  //   canvas = G_vmlCanvasManager.initElement(canvas);
-  // }
-  // context.current = canvas.getcontext.current('2d');
   const mouseCurrent = (e) => {
     const { top, left } = context.current.getBoundingClientRect();
     const percentDiff = context.current.width / e.target.clientWidth;
@@ -60,11 +47,6 @@ function DrawingCanvas(props) {
   const mouseleave = (e) => {
     setPaint(false);
   };
-
-  // var clickX = new Array();
-  // var clickY = new Array();
-  // var clickDrag = new Array();
-  // var paint;
 
   function addClick(x, y, drag) {
     setClickX([...clickX, x]);
@@ -112,16 +94,14 @@ function DrawingCanvas(props) {
   }
   }, [clickX,clickY, paint])
 
-
-
   return (
     // <div className="mainContainer">
       <div id="drawingCanvas" className="drawingCanvas">
+          <p>Draw Your Imagination!</p>
         <canvas id="canvasInAPerfectWorld" width="600" height="400"
           ref={context} onMouseDown={mousedown} onMouseMove={mousemove}
           onMouseUp={mouseup} onMouseLeave={mouseleave}></canvas>
         <button id="clearbtn" onClick={clearCanvas}>Clear</button>
-        {/* <button id="orangebtn" onClick={strokeStyle("#FF7F00")}>Orange</button> */}
       </div>
     // </div>
   );
