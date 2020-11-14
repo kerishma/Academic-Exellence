@@ -1,0 +1,113 @@
+body {
+    background: #3c5377;
+}
+
+/*Holds everything*/
+.mainContainer{
+    position: absolute;
+    justify-content: center;
+    width: 250px;
+    height: 220px;
+    background: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+}
+
+#speakBub {
+    background-size: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+.rs-play {
+    width: 25%;
+}
+
+
+/*Holds front and back faces of card*/
+.card {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+
+.rotate{
+    transform: rotateY(180deg);
+}
+
+.cardFront {
+    position: absolute; 
+    justify-content: center;
+    align-items: center;
+    /* top: 0;
+    left: 0; */
+    width: 120%;
+    height: 150%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    background: #ffc728;
+    color: #000;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.cardFront:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.cardBack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    background: #fafafa;
+    color: #333;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+
+.cardFront h1, .cardBack h1{
+    font-family: 'zilla slab', sans-serif;
+    padding: 30px;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.nextWord h1:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.cardFront p, .cardBack p{
+    font-family: 'zilla slab', sans-serif;
+    padding: 30px;
+    font-weight: normal;
+    font-size: 12px;
+    text-align: center;
+}
+
+#nextWord {
+    font-family:'Roboto Slab', serif;
+    position: relative;
+    top: 50px;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+#nextWord:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+

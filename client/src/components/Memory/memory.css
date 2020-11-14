@@ -1,0 +1,52 @@
+div#memory_board {
+  background: #ccc;
+  border: black;
+  width: 800px;
+  height: 540px;
+  padding: 31px;
+  border-style: solid;
+  border-radius: 10px;
+  margin: 0px auto;
+}
+div#memory_board > div {
+  background: url(https://static.vecteezy.com/system/resources/thumbnails/000/553/435/small/apple_006.jpg)
+    no-repeat;
+  background-size: contain;
+  border: #000;
+  border-style: solid;
+  border-radius: 10px;
+  width: 71px;
+  height: 71px;
+  float: left;
+  margin: 10px;
+  padding: 20px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.mainContainer {
+  justify-content: center;
+  padding-bottom: 25px;
+}
+
+.backCard > h1 {
+  width: 100%;
+  font-size: 15px;
+}
+.backCard {
+  font-size: 17px;
+  font-weight: bolder;
+  color: red;
+}
+
+.frontCard > h1 {
+  width: 100%;
+  font-size: 15px;
+  color: white;
+}
+.frontCard {
+  font-size: 17px;
+  font-weight: bolder;
+  color: white;
+}
