@@ -15,6 +15,7 @@ const api = {
     'x-rapidapi-key': process.env.REACT_APP_API_KEY,
     'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
   },
+  // process.env.REACT_APP_API_KEY
 };
 console.log(process.env.REACT_APP_API_KEY)
 let count = 0;

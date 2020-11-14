@@ -3,7 +3,7 @@ import "../css/login.css";
 import { Link, useHistory } from "react-router-dom";
 import M from "materialize-css";
 import { UserContext } from "../App"
-// import logo from "../images/logo.JPG";
+import logoLogin from "../images/logologin.JPG";
 
 
 
@@ -58,7 +58,7 @@ function Login() {
             <div id="loginbox" className="container">
             <p>Members Login!</p>
             
-            {/* <img src={logo} alt="Logo" id="mainLogo"></img> */}
+            <img src={logoLogin} alt="Logo" id="logologin"></img>
                 <div className="row justify-content-center center">
 
                 </div>
