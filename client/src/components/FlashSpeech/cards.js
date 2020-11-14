@@ -88,12 +88,13 @@ export default class Cards extends Component {
   };
 
   render() {
-    return (
-      <div className="mainContainer">
+    return ( 
+       <div className="mainContainer">
+        <p>Hear the words!</p>
         <FormControl>
           <TextField
             id="outlined-helperText"
-            label="Search a word"
+            label="Type a word"
             placeholder="Enter a word..."
             onChange={this.handleWordChange}
             variant="outlined"
@@ -109,7 +110,6 @@ export default class Cards extends Component {
             {/* <p>This side can hold the word from the array.</p> */}
             <center>
               <Speech word={this.state.currentWord}/>
-              {/* <Speech styles={{play:{button:{backgroundImage:{speakBub}}}}}textAsButton={true} text={this.state.currentWord} /><img src={speakBub} id ="speakBub"></img> */}
             </center>
             <center>
               <button id="nextWord" onClick={this.renderNextCard}>

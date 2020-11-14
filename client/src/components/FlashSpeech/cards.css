@@ -7,7 +7,7 @@ body {
     position: absolute;
     justify-content: center;
     width: 250px;
-    height: 320px;
+    height: 220px;
     background: none;
     top: 50%;
     left: 50%;
@@ -101,7 +101,7 @@ body {
 #nextWord {
     font-family:'Roboto Slab', serif;
     position: relative;
-    top: 150px;
+    top: 50px;
     width: 50%;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -110,3 +110,4 @@ body {
 #nextWord:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
