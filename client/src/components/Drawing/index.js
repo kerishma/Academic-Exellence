@@ -101,6 +101,7 @@ function DrawingCanvas(props) {
         <canvas id="canvasInAPerfectWorld" width="600" height="400"
           ref={context} onMouseDown={mousedown} onMouseMove={mousemove}
           onMouseUp={mouseup} onMouseLeave={mouseleave}></canvas>
+          <br></br>
         <button id="clearbtn" onClick={clearCanvas}>Clear</button>
       </div>
     // </div>

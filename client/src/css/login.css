@@ -17,6 +17,10 @@ body {
     width: 50%
 }
 
+#logologin {
+    width: 50%;
+}
+
 #loginBtn {
     width: 50%;
     border-radius: 10px;
