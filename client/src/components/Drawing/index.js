@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import '../Drawing/drawing.css';
-
 import Typography from '@material-ui/core/Typography';
 // import e from 'express';
 // import $ from 'jquery';
@@ -39,21 +38,23 @@ function DrawingCanvas(props) {
     setPaint(true);
     const [x, y] = mouseCurrent(e)
     addClick(x, y);
-    redraw();
+    // redraw();
   };
 
   const mousemove = (e) => {
     e.persist()
     if (paint) {
-      console.log(e)
+      // console.log(e)
       const [x, y] = mouseCurrent(e)
       addClick(x, y);
-      redraw();
+      // redraw();
     }
   };
 
   const mouseup = (e) => {
     setPaint(false);
+    setClickX([...clickX, false]);
+    setClickY([...clickY, false]);
   };
 
   const mouseleave = (e) => {
@@ -89,11 +90,15 @@ function DrawingCanvas(props) {
     canvas.lineWidth = 5;
 
     // for (var i = 0; i < clickX.length; i++) {
-    canvas.beginPath();
-    if (clickX.length > 1) {
+    canvas.beginPath(); 
+    if (!clickX[clickX.length-2]) {
+      console.log('hello')
+      canvas.moveTo(clickX[clickX.length - 1], clickY[clickY.length -1]);
+    }
+    else if (clickX.length > 1) {
       canvas.moveTo(clickX[clickX.length - 2], clickY[clickY.length - 2]);
     } else {
-      canvas.moveTo(clickX[clickX.length] - 1, clickY[clickY.length]);
+      canvas.moveTo(clickX[clickX.length - 1], clickY[clickY.length -1]);
     }
     canvas.lineTo(clickX[clickX.length - 1], clickY[clickY.length - 1]);
     canvas.closePath();
@@ -101,16 +106,16 @@ function DrawingCanvas(props) {
   }
   // }
 
-  // useEffect(() => {
-  //   if (paint) { 
-  //   redraw()
-  // }
-  // }, [clickX,clickY, paint])
+  useEffect(() => {
+    if (paint) { 
+    redraw()
+  }
+  }, [clickX,clickY, paint])
 
 
 
   return (
-    <div className="mainContainer">
+    // <div className="mainContainer">
       <div id="drawingCanvas" className="drawingCanvas">
         <canvas id="canvasInAPerfectWorld" width="600" height="400"
           ref={context} onMouseDown={mousedown} onMouseMove={mousemove}
@@ -118,7 +123,7 @@ function DrawingCanvas(props) {
         <button id="clearbtn" onClick={clearCanvas}>Clear</button>
         {/* <button id="orangebtn" onClick={strokeStyle("#FF7F00")}>Orange</button> */}
       </div>
-    </div>
+    // </div>
   );
 }
 
