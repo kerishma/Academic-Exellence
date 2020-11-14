@@ -167,14 +167,14 @@ class MemoryCards extends Component {
     return (
       <div>
         <p>Click the apple and match the words!</p>
-      <div className="mainContainer">
+      {/* < className="mainContainer"> */}
         <div id="memory_board">
           {this.state.shuffled_array.map((tile, index) => (
             <EachCard data={tile} isFlipped={this.state.isFlipped[index]} tileIndex={index} flip={this.tileClick} key={`card-${index}`} />
           ))}
           </div>
         </div>
-      </div>
+      // </div>
     );
   }
 }

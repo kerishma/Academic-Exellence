@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../FlashSpeech/cards.css';
-import Speech from 'react-speech';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import speakBub from "../../images/speakbub.JPG"
+import Speech from './index'
+// import speakBub from "../../images/speakbub.JPG"
 
 const axios = require('axios');
 
@@ -12,11 +12,11 @@ const api = {
   method: 'GET',
   url: 'https://rapidapi.p.rapidapi.com/words/car/typeOf',
   headers: {
-    'x-rapidapi-key': process.env.API_KEY,
+    'x-rapidapi-key': process.env.REACT_APP_API_KEY,
     'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
   },
 };
-
+console.log(process.env.REACT_APP_API_KEY)
 let count = 0;
 export default class Cards extends Component {
   constructor(props) {
@@ -108,7 +108,8 @@ export default class Cards extends Component {
             <h1>{this.state.currentWord}</h1>
             {/* <p>This side can hold the word from the array.</p> */}
             <center>
-              <Speech text={this.state.currentWord} /><img src={speakBub} id ="speakBub"></img>
+              <Speech word={this.state.currentWord}/>
+              {/* <Speech styles={{play:{button:{backgroundImage:{speakBub}}}}}textAsButton={true} text={this.state.currentWord} /><img src={speakBub} id ="speakBub"></img> */}
             </center>
             <center>
               <button id="nextWord" onClick={this.renderNextCard}>
@@ -116,22 +117,10 @@ export default class Cards extends Component {
               </button>
             </center>
           </div>
-
-          {/* <div className="cardBack">
-            <button onclick="flip()">Flip to Front</button>
-            <h1>Back of Card</h1>
-            <p>This side can hold an image and also the voice button.</p>
-            <button>Say it!</button>
-          </div> */}
         </div>
       </div>
     );
   }
 
-  /*{/* <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-function flip() {
-    $(`.card`).toggleClass(`rotate`);
-}
-</script> */
+
 }
